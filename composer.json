@@ -1,0 +1,35 @@
+{
+	"name":        "pxn/weblinkmc",
+	"description": "Link your website with your mc server",
+	"type":        "library",
+	"homepage":    "https://poixson.com/",
+	"license":     "AGPL-3.0",
+	"support": {
+		"source":  "https://git.poixson.com/summary/mc!WebLinkMC.git",
+		"issues":  "https://git.poixson.com/tickets/mc!WebLinkMC.git",
+		"discord": "https://discord.gg/jHgP2a3kDx"
+	},
+	"authors": [{
+		"name": "lorenzop",
+		"role": "Developer"
+	}],
+	"autoload": {
+		"psr-4": {
+			"pxn\\WebLinkMC\\": "src/"
+		}
+	},
+	"require": {
+		"pxn/phputils": "*",
+		"pxn/composerlocaldev": "*"
+	},
+	"require-dev": {
+		"filp/whoops": "*",
+		"kint-php/kint": "*",
+		"phpunit/phpunit": "*"
+	},
+	"config": {
+		"allow-plugins": {
+			"pxn/composerlocaldev": true
+		}
+	}
+}
