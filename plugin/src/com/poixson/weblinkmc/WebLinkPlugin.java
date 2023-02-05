@@ -3,13 +3,16 @@ package com.poixson.weblinkmc;
 import java.io.IOException;
 import java.net.Socket;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
+import java.util.UUID;
 import java.util.concurrent.CopyOnWriteArraySet;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.logging.Logger;
 
 import com.poixson.commonmc.tools.plugin.xJavaPlugin;
 import com.poixson.utils.Utils;
+import com.poixson.weblinkmc.TopStats.PlayerStatsDAO;
 import com.poixson.weblinkmc.sockets.SocketHandler;
 import com.poixson.weblinkmc.sockets.SocketListener;
 
@@ -27,6 +30,8 @@ public class WebLinkPlugin extends xJavaPlugin {
 	protected final AtomicReference<SocketListener> socketListener = new AtomicReference<SocketListener>(null);
 	protected final CopyOnWriteArraySet<SocketHandler> connections = new CopyOnWriteArraySet<SocketHandler>();
 
+	protected final AtomicReference<TopStats> topstats = new AtomicReference<TopStats>(null);
+
 
 
 	public WebLinkPlugin() {
@@ -38,6 +43,14 @@ public class WebLinkPlugin extends xJavaPlugin {
 	@Override
 	public void onEnable() {
 		super.onEnable();
+		// top stats
+		{
+			final TopStats topstats = new TopStats(this);
+			final TopStats previous = this.topstats.getAndSet(topstats);
+			if (previous != null)
+				previous.stop();
+			topstats.start();
+		}
 		// socket listener
 		{
 			final SocketListener listener = new SocketListener(this, API_PORT);
@@ -69,6 +82,12 @@ public class WebLinkPlugin extends xJavaPlugin {
 			if (this.connections.isEmpty())
 				break;
 		}
+		// top stats
+		{
+			final TopStats topstats = this.topstats.getAndSet(null);
+			if (topstats != null)
+				topstats.stop();
+		}
 	}
 
 
@@ -85,6 +104,15 @@ public class WebLinkPlugin extends xJavaPlugin {
 	public void unregister(final SocketHandler client) {
 		this.connections.remove(client);
 		Utils.SafeClose(client);
+	}
+
+
+
+	public Map<UUID, PlayerStatsDAO> getTopDistance() {
+		final TopStats topstats = this.topstats.get();
+		if (topstats == null)
+			return null;
+		return topstats.top_dist.get();
 	}
 
 
