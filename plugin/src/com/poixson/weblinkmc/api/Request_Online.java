@@ -29,8 +29,7 @@ public class Request_Online extends RequestFuture {
 		}
 		final Map<String, Object> map = new HashMap<String, Object>();
 		map.put("online", online);
-		final Gson gson = new Gson();
-		return gson.toJson(map);
+		return (new Gson()).toJson(map);
 	}
 
 
