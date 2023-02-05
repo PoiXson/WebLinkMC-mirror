@@ -19,7 +19,7 @@ import com.poixson.tools.JsonChunker;
 import com.poixson.tools.JsonChunker.ChunkProcessor;
 import com.poixson.utils.Utils;
 import com.poixson.weblinkmc.WebLinkPlugin;
-import com.poixson.weblinkmc.api.Command_Online;
+import com.poixson.weblinkmc.api.Request_Online;
 
 
 public class SocketHandler extends Thread implements Closeable, ChunkProcessor {
@@ -85,7 +85,7 @@ public class SocketHandler extends Thread implements Closeable, ChunkProcessor {
 		try {
 			switch (request) {
 			case "online": {
-				final Command_Online cmd = new Command_Online(this.plugin);
+				final Request_Online cmd = new Request_Online(this.plugin);
 				return cmd.get(5, TimeUnit.SECONDS);
 			}
 			case "end":  case "exit":

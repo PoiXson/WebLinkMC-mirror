@@ -18,7 +18,7 @@ import com.poixson.utils.Utils;
 import com.poixson.weblinkmc.WebLinkPlugin;
 
 
-public abstract class CommandFuture extends BukkitRunnable implements Future<String>, Callable<String> {
+public abstract class RequestFuture extends BukkitRunnable implements Future<String>, Callable<String> {
 
 	protected final WebLinkPlugin plugin;
 
@@ -28,7 +28,7 @@ public abstract class CommandFuture extends BukkitRunnable implements Future<Str
 
 
 
-	public CommandFuture(final WebLinkPlugin plugin) {
+	public RequestFuture(final WebLinkPlugin plugin) {
 		this.plugin = plugin;
 		this.runTask(plugin);
 	}

@@ -11,11 +11,11 @@ import com.google.gson.Gson;
 import com.poixson.weblinkmc.WebLinkPlugin;
 
 
-public class Command_Online extends CommandFuture {
+public class Request_Online extends RequestFuture {
 
 
 
-	public Command_Online(final WebLinkPlugin plugin) {
+	public Request_Online(final WebLinkPlugin plugin) {
 		super(plugin);
 	}
 
