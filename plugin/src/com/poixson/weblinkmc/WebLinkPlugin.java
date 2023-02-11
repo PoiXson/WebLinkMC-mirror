@@ -23,8 +23,8 @@ public class WebLinkPlugin extends xJavaPlugin {
 	public static final Logger log = Logger.getLogger("Minecraft");
 	public static final String LOG_PREFIX  = "[WebLink] ";
 	public static final String CHAT_PREFIX = ChatColor.AQUA + LOG_PREFIX + ChatColor.WHITE;
-	protected static final int SPIGOT_PLUGIN_ID = 0;
-	protected static final int BSTATS_PLUGIN_ID = 0;
+	protected static final int SPIGOT_PLUGIN_ID = 107954;
+	protected static final int BSTATS_PLUGIN_ID = 17698;
 
 	public static int API_PORT = 25511;
 
