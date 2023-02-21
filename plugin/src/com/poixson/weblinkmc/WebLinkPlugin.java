@@ -23,8 +23,6 @@ public class WebLinkPlugin extends xJavaPlugin {
 	public static final Logger log = Logger.getLogger("Minecraft");
 	public static final String LOG_PREFIX  = "[WebLink] ";
 	public static final String CHAT_PREFIX = ChatColor.AQUA + LOG_PREFIX + ChatColor.WHITE;
-	protected static final int SPIGOT_PLUGIN_ID = 107954;
-	protected static final int BSTATS_PLUGIN_ID = 17698;
 
 	public static int API_PORT = 25511;
 
@@ -34,6 +32,9 @@ public class WebLinkPlugin extends xJavaPlugin {
 	protected final CopyOnWriteArraySet<SocketHandler> connections = new CopyOnWriteArraySet<SocketHandler>();
 
 	protected final AtomicReference<TopStats> topstats = new AtomicReference<TopStats>(null);
+
+	@Override public int getSpigotPluginID() { return 107954; }
+	@Override public int getBStatsID() {       return 17698;  }
 
 
 
@@ -116,21 +117,6 @@ public class WebLinkPlugin extends xJavaPlugin {
 		if (topstats == null)
 			return null;
 		return topstats.top_dist.get();
-	}
-
-
-
-	// -------------------------------------------------------------------------------
-
-
-
-	@Override
-	protected int getSpigotPluginID() {
-		return SPIGOT_PLUGIN_ID;
-	}
-	@Override
-	protected int getBStatsID() {
-		return BSTATS_PLUGIN_ID;
 	}
 
 
