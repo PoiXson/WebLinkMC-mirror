@@ -8,7 +8,6 @@ import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.CopyOnWriteArraySet;
 import java.util.concurrent.atomic.AtomicReference;
-import java.util.logging.Logger;
 
 import org.bukkit.ChatColor;
 
@@ -20,7 +19,6 @@ import com.poixson.weblinkmc.sockets.SocketListener;
 
 
 public class WebLinkPlugin extends xJavaPlugin {
-	public static final Logger log = Logger.getLogger("Minecraft");
 	public static final String LOG_PREFIX  = "[WebLink] ";
 	public static final String CHAT_PREFIX = ChatColor.AQUA + LOG_PREFIX + ChatColor.WHITE;
 

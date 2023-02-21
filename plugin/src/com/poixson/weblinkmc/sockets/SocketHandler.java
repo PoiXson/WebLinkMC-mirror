@@ -1,5 +1,8 @@
 package com.poixson.weblinkmc.sockets;
 
+import static com.poixson.commonmc.tools.plugin.xJavaPlugin.LOG;
+import static com.poixson.weblinkmc.WebLinkPlugin.LOG_PREFIX;
+
 import java.io.BufferedReader;
 import java.io.Closeable;
 import java.io.IOException;
@@ -11,7 +14,6 @@ import java.util.Map;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
-import java.util.logging.Logger;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
@@ -24,8 +26,6 @@ import com.poixson.weblinkmc.api.Request_TopDistance;
 
 
 public class SocketHandler extends Thread implements Closeable, ChunkProcessor {
-	protected static final Logger log = WebLinkPlugin.log;
-	protected static final String LOG_PREFIX = WebLinkPlugin.LOG_PREFIX;
 
 	protected final WebLinkPlugin plugin;
 
@@ -62,7 +62,7 @@ public class SocketHandler extends Thread implements Closeable, ChunkProcessor {
 			e.printStackTrace();
 		} catch (RuntimeException e) {
 			if ("JSON must start with { bracket".equals(e.getMessage()))
-				log.warning(LOG_PREFIX + "Invalid request from: " + this.socket.getRemoteSocketAddress().toString());
+				LOG.warning(LOG_PREFIX + "Invalid request from: " + this.socket.getRemoteSocketAddress().toString());
 		}
 		this.plugin.unregister(this);
 	}

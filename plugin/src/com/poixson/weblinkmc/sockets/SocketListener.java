@@ -1,20 +1,20 @@
 package com.poixson.weblinkmc.sockets;
 
+import static com.poixson.commonmc.tools.plugin.xJavaPlugin.LOG;
+import static com.poixson.weblinkmc.WebLinkPlugin.LOG_PREFIX;
+
 import java.io.Closeable;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicReference;
-import java.util.logging.Logger;
 
 import com.poixson.utils.Utils;
 import com.poixson.weblinkmc.WebLinkPlugin;
 
 
 public class SocketListener extends Thread implements Closeable {
-	protected static final Logger log = WebLinkPlugin.log;
-	protected static final String LOG_PREFIX = WebLinkPlugin.LOG_PREFIX;
 
 	protected final WebLinkPlugin plugin;
 	protected final AtomicReference<ServerSocket> listener = new AtomicReference<ServerSocket>(null);
@@ -46,20 +46,20 @@ public class SocketListener extends Thread implements Closeable {
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
-		log.info(LOG_PREFIX + "Listening for socket connections..");
+		LOG.info(LOG_PREFIX + "Listening for socket connections..");
 		while (true) {
 			if (this.stopping.get())
 				break;
 			try {
 				final ServerSocket listener = this.listener.get();
 				final Socket client = listener.accept();
-				log.info(LOG_PREFIX + "Connection from: " + client.getRemoteSocketAddress().toString());
+				LOG.info(LOG_PREFIX + "Connection from: " + client.getRemoteSocketAddress().toString());
 				this.plugin.register(client);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}
-		log.info(LOG_PREFIX + "Socket listener stopped");
+		LOG.info(LOG_PREFIX + "Socket listener stopped");
 		Utils.SafeClose(this.listener.get());
 		this.running.set(false);
 	}
