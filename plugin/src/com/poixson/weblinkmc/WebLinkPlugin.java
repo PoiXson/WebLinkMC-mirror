@@ -9,7 +9,9 @@ import java.util.UUID;
 import java.util.concurrent.CopyOnWriteArraySet;
 import java.util.concurrent.atomic.AtomicReference;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.plugin.ServicePriority;
 
 import com.poixson.commonmc.tools.plugin.xJavaPlugin;
 import com.poixson.utils.Utils;
@@ -23,8 +25,6 @@ public class WebLinkPlugin extends xJavaPlugin {
 	public static final String CHAT_PREFIX = ChatColor.AQUA + LOG_PREFIX + ChatColor.WHITE;
 
 	public static int API_PORT = 25511;
-
-	protected static final AtomicReference<WebLinkPlugin> instance = new AtomicReference<WebLinkPlugin>(null);
 
 	protected final AtomicReference<SocketListener> socketListener = new AtomicReference<SocketListener>(null);
 	protected final CopyOnWriteArraySet<SocketHandler> connections = new CopyOnWriteArraySet<SocketHandler>();
@@ -61,6 +61,9 @@ public class WebLinkPlugin extends xJavaPlugin {
 				Utils.SafeClose(previous);
 			listener.start();
 		}
+		// api
+		Bukkit.getServicesManager()
+			.register(WebLinkPlugin.class, this, this, ServicePriority.Normal);
 	}
 
 	@Override
