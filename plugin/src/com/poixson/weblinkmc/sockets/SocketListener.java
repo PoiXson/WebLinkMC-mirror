@@ -7,6 +7,7 @@ import java.io.Closeable;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.SocketException;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicReference;
 
@@ -55,6 +56,9 @@ public class SocketListener extends Thread implements Closeable {
 				final Socket client = listener.accept();
 				LOG.info(LOG_PREFIX + "Connection from: " + client.getRemoteSocketAddress().toString());
 				this.plugin.register(client);
+			} catch (SocketException e) {
+				if (!"Socket closed".equals(e.getMessage()))
+					e.printStackTrace();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
