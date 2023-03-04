@@ -21,6 +21,8 @@ import com.poixson.weblinkmc.sockets.SocketListener;
 
 
 public class WebLinkPlugin extends xJavaPlugin {
+	@Override public int getSpigotPluginID() { return 107954; }
+	@Override public int getBStatsID() {       return 17698;  }
 	public static final String LOG_PREFIX  = "[WebLink] ";
 	public static final String CHAT_PREFIX = ChatColor.AQUA + LOG_PREFIX + ChatColor.WHITE;
 
@@ -30,9 +32,6 @@ public class WebLinkPlugin extends xJavaPlugin {
 	protected final CopyOnWriteArraySet<SocketHandler> connections = new CopyOnWriteArraySet<SocketHandler>();
 
 	protected final AtomicReference<TopStats> topstats = new AtomicReference<TopStats>(null);
-
-	@Override public int getSpigotPluginID() { return 107954; }
-	@Override public int getBStatsID() {       return 17698;  }
 
 
 
