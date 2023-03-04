@@ -2,7 +2,8 @@ name: ${project.name}
 main: com.poixson.weblinkmc.WebLinkPlugin
 version: ${project.version}
 api-version: ${spigot-short-version}
-depend: [ pxnCommonPluginMC ]
+depend:
+  - pxnCommonPluginMC
 authors: [ lorenzop ]
 website: ${project.url}
 description: ${project.description}
