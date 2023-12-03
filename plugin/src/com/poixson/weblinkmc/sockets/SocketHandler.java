@@ -1,6 +1,6 @@
 package com.poixson.weblinkmc.sockets;
 
-import static com.poixson.commonmc.tools.plugin.xJavaPlugin.LOG;
+import static com.poixson.pluginlib.tools.plugin.xJavaPlugin.LOG;
 import static com.poixson.weblinkmc.WebLinkPlugin.LOG_PREFIX;
 
 import java.io.BufferedReader;
