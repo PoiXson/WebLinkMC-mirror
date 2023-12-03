@@ -3,7 +3,7 @@ main: com.poixson.weblinkmc.WebLinkPlugin
 version: ${project.version}
 api-version: ${spigot-short-version}
 depend:
-  - pxnCommonPluginMC
+  - pxnPluginLib
 authors: [ lorenzop ]
 website: ${project.url}
 description: ${project.description}
