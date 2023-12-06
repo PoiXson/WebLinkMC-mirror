@@ -1,5 +1,7 @@
 package com.poixson.weblinkmc;
 
+import static com.poixson.utils.Utils.SafeClose;
+
 import java.io.IOException;
 import java.net.Socket;
 import java.util.HashSet;
@@ -14,7 +16,6 @@ import org.bukkit.ChatColor;
 import org.bukkit.plugin.ServicePriority;
 
 import com.poixson.pluginlib.tools.plugin.xJavaPlugin;
-import com.poixson.utils.Utils;
 import com.poixson.weblinkmc.TopStats.PlayerStatsDAO;
 import com.poixson.weblinkmc.sockets.SocketHandler;
 import com.poixson.weblinkmc.sockets.SocketListener;
@@ -57,7 +58,7 @@ public class WebLinkPlugin extends xJavaPlugin {
 			final SocketListener listener = new SocketListener(this, API_PORT);
 			final SocketListener previous = this.socketListener.getAndSet(listener);
 			if (previous != null)
-				Utils.SafeClose(previous);
+				SafeClose(previous);
 			listener.start();
 		}
 		// api
@@ -71,13 +72,13 @@ public class WebLinkPlugin extends xJavaPlugin {
 		// stop listening for connections
 		{
 			final SocketListener listener = this.socketListener.getAndSet(null);
-			Utils.SafeClose(listener);
+			SafeClose(listener);
 		}
 		// close existing connections
 		for (int i=0; i<5; i++) {
 			final Set<SocketHandler> removing = new HashSet<SocketHandler>();
 			for (final SocketHandler client : this.connections) {
-				Utils.SafeClose(client);
+				SafeClose(client);
 				removing.add(client);
 			}
 			for (final SocketHandler client : removing) {
@@ -107,7 +108,7 @@ public class WebLinkPlugin extends xJavaPlugin {
 	}
 	public void unregister(final SocketHandler client) {
 		this.connections.remove(client);
-		Utils.SafeClose(client);
+		SafeClose(client);
 	}
 
 

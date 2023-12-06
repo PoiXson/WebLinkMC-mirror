@@ -1,6 +1,7 @@
 package com.poixson.weblinkmc.sockets;
 
 import static com.poixson.pluginlib.tools.plugin.xJavaPlugin.LOG;
+import static com.poixson.utils.Utils.SafeClose;
 import static com.poixson.weblinkmc.WebLinkPlugin.LOG_PREFIX;
 
 import java.io.Closeable;
@@ -11,7 +12,6 @@ import java.net.SocketException;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicReference;
 
-import com.poixson.utils.Utils;
 import com.poixson.weblinkmc.WebLinkPlugin;
 
 
@@ -42,7 +42,7 @@ public class SocketListener extends Thread implements Closeable {
 			final ServerSocket listener = new ServerSocket(this.port);
 			final ServerSocket previous = this.listener.getAndSet(listener);
 			if (previous != null)
-				Utils.SafeClose(previous);
+				SafeClose(previous);
 //			listener.bind(null);
 		} catch (IOException e) {
 			throw new RuntimeException(e);
@@ -64,13 +64,13 @@ public class SocketListener extends Thread implements Closeable {
 			}
 		}
 		LOG.info(LOG_PREFIX + "Socket listener stopped");
-		Utils.SafeClose(this.listener.get());
+		SafeClose(this.listener.get());
 		this.running.set(false);
 	}
 	@Override
 	public void close() throws IOException {
 		this.stopping.set(true);
-		Utils.SafeClose(this.listener.get());
+		SafeClose(this.listener.get());
 	}
 
 

@@ -1,5 +1,7 @@
 package com.poixson.weblinkmc.api;
 
+import static com.poixson.utils.Utils.GetMS;
+
 import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.Callable;
@@ -14,7 +16,6 @@ import java.util.concurrent.locks.LockSupport;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import com.poixson.tools.xTime;
-import com.poixson.utils.Utils;
 import com.poixson.weblinkmc.WebLinkPlugin;
 
 
@@ -85,12 +86,12 @@ public abstract class RequestFuture extends BukkitRunnable implements Future<Str
 			if (result != null)
 				return result;
 		}
-		final long start = Utils.GetMS();
+		final long start = GetMS();
 		final xTime xtimeout = new xTime(timeout, unit);
 		while (true) {
 			// timeout
 			if (timeout > 0L) {
-				if (Utils.GetMS() - start >= xtimeout.ms())
+				if (GetMS() - start >= xtimeout.ms())
 					return null;
 			}
 			final String result = this.result.get();

@@ -1,6 +1,8 @@
 package com.poixson.weblinkmc.sockets;
 
 import static com.poixson.pluginlib.tools.plugin.xJavaPlugin.LOG;
+import static com.poixson.utils.Utils.IsEmpty;
+import static com.poixson.utils.Utils.SafeClose;
 import static com.poixson.weblinkmc.WebLinkPlugin.LOG_PREFIX;
 
 import java.io.BufferedReader;
@@ -19,7 +21,6 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import com.poixson.tools.JsonChunker;
 import com.poixson.tools.JsonChunker.ChunkProcessor;
-import com.poixson.utils.Utils;
 import com.poixson.weblinkmc.WebLinkPlugin;
 import com.poixson.weblinkmc.api.Request_Online;
 import com.poixson.weblinkmc.api.Request_TopDistance;
@@ -76,7 +77,7 @@ public class SocketHandler extends Thread implements Closeable, ChunkProcessor {
 		if (map.containsKey("request")) {
 			final String request = map.get("request").getAsString();
 			final String result = this.processRequest(request, map);
-			if (Utils.notEmpty(result)) {
+			if (!IsEmpty(result)) {
 				this.out.println(result);
 				this.out.flush();
 			}
@@ -95,7 +96,7 @@ public class SocketHandler extends Thread implements Closeable, ChunkProcessor {
 			}
 			case "end":  case "exit":
 			case "done": case "quit":
-				Utils.SafeClose(this);
+				SafeClose(this);
 				return null;
 			default:
 				(new RuntimeException("Invalid web-link request: " + request))
@@ -122,8 +123,8 @@ public class SocketHandler extends Thread implements Closeable, ChunkProcessor {
 		} catch (IOException e) {
 			ex = e;
 		}
-		Utils.SafeClose(this.out);
-		Utils.SafeClose(this.in);
+		SafeClose(this.out);
+		SafeClose(this.in);
 		if (ex != null)
 			throw ex;
 	}
