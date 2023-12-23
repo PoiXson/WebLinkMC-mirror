@@ -15,7 +15,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.ServicePriority;
 
-import com.poixson.pluginlib.tools.plugin.xJavaPlugin;
+import com.poixson.tools.xJavaPlugin;
 import com.poixson.weblinkmc.TopStats.PlayerStatsDAO;
 import com.poixson.weblinkmc.sockets.SocketHandler;
 import com.poixson.weblinkmc.sockets.SocketListener;

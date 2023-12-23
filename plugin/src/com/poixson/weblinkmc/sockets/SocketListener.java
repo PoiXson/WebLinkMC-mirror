@@ -1,6 +1,5 @@
 package com.poixson.weblinkmc.sockets;
 
-import static com.poixson.pluginlib.tools.plugin.xJavaPlugin.LOG;
 import static com.poixson.utils.Utils.SafeClose;
 import static com.poixson.weblinkmc.WebLinkPlugin.LOG_PREFIX;
 
@@ -11,6 +10,7 @@ import java.net.Socket;
 import java.net.SocketException;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.logging.Logger;
 
 import com.poixson.weblinkmc.WebLinkPlugin;
 
@@ -47,14 +47,14 @@ public class SocketListener extends Thread implements Closeable {
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
-		LOG.info(LOG_PREFIX + "Listening for socket connections..");
+		this.log().info(LOG_PREFIX + "Listening for socket connections..");
 		while (true) {
 			if (this.stopping.get())
 				break;
 			try {
 				final ServerSocket listener = this.listener.get();
 				final Socket client = listener.accept();
-				LOG.info(LOG_PREFIX + "Connection from: " + client.getRemoteSocketAddress().toString());
+				this.log().info(LOG_PREFIX + "Connection from: " + client.getRemoteSocketAddress().toString());
 				this.plugin.register(client);
 			} catch (SocketException e) {
 				if (!"Socket closed".equals(e.getMessage()))
@@ -63,7 +63,7 @@ public class SocketListener extends Thread implements Closeable {
 				e.printStackTrace();
 			}
 		}
-		LOG.info(LOG_PREFIX + "Socket listener stopped");
+		this.log().info(LOG_PREFIX + "Socket listener stopped");
 		SafeClose(this.listener.get());
 		this.running.set(false);
 	}
@@ -80,6 +80,12 @@ public class SocketListener extends Thread implements Closeable {
 	}
 	public boolean isStopping() {
 		return this.stopping.get();
+	}
+
+
+
+	public Logger log() {
+		return this.plugin.getLogger();
 	}
 
 
