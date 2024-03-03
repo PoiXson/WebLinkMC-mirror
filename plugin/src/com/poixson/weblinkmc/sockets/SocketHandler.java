@@ -62,7 +62,7 @@ public class SocketHandler extends Thread implements Closeable, ChunkProcessor {
 			e.printStackTrace();
 		} catch (RuntimeException e) {
 			if ("JSON must start with { bracket".equals(e.getMessage()))
-				this.log().warning("Invalid request from: " + this.socket.getRemoteSocketAddress().toString());
+				this.log().warning("Invalid request from: "+this.socket.getRemoteSocketAddress().toString());
 		}
 		this.plugin.unregister(this);
 	}
@@ -98,7 +98,7 @@ public class SocketHandler extends Thread implements Closeable, ChunkProcessor {
 				SafeClose(this);
 				return null;
 			default:
-				(new RuntimeException("Invalid web-link request: " + request))
+				(new RuntimeException("Invalid web-link request: "+request))
 					.printStackTrace();
 				return null;
 			}

@@ -53,7 +53,7 @@ public class SocketListener extends Thread implements Closeable {
 			try {
 				final ServerSocket listener = this.listener.get();
 				final Socket client = listener.accept();
-				this.log().info("Connection from: " + client.getRemoteSocketAddress().toString());
+				this.log().info("Connection from: "+client.getRemoteSocketAddress().toString());
 				this.plugin.register(client);
 			} catch (SocketException e) {
 				if (!"Socket closed".equals(e.getMessage()))
