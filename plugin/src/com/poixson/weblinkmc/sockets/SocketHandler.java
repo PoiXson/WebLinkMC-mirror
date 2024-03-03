@@ -2,7 +2,6 @@ package com.poixson.weblinkmc.sockets;
 
 import static com.poixson.utils.Utils.IsEmpty;
 import static com.poixson.utils.Utils.SafeClose;
-import static com.poixson.weblinkmc.WebLinkPlugin.LOG_PREFIX;
 
 import java.io.BufferedReader;
 import java.io.Closeable;
@@ -63,7 +62,7 @@ public class SocketHandler extends Thread implements Closeable, ChunkProcessor {
 			e.printStackTrace();
 		} catch (RuntimeException e) {
 			if ("JSON must start with { bracket".equals(e.getMessage()))
-				this.log().warning(LOG_PREFIX + "Invalid request from: " + this.socket.getRemoteSocketAddress().toString());
+				this.log().warning("Invalid request from: " + this.socket.getRemoteSocketAddress().toString());
 		}
 		this.plugin.unregister(this);
 	}
