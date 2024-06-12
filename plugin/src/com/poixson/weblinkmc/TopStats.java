@@ -1,5 +1,7 @@
 package com.poixson.weblinkmc;
 
+import static com.poixson.utils.BukkitUtils.SafeCancel;
+
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -57,9 +59,7 @@ public class TopStats extends BukkitRunnable implements xStartStop {
 	}
 	@Override
 	public void stop() {
-		try {
-			this.cancel();
-		} catch (IllegalStateException ignore) {}
+		SafeCancel(this);
 	}
 
 
