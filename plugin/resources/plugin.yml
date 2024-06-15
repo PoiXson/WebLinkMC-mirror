@@ -4,6 +4,8 @@ version: ${project.version}
 api-version: ${spigot-short-version}
 depend:
   - pxnPluginLib
+softdepend:
+  - Vault
 authors: [ lorenzop ]
 website: ${project.url}
 description: ${project.description}

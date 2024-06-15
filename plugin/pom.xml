@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated: Thu Jun  6 10:17:06 PM EDT 2024 -->
+<!-- Generated: Fri Jun 14 08:05:51 PM EDT 2024 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -38,6 +38,7 @@
 		<spigot-api-version>1.20.6-R0.1-SNAPSHOT</spigot-api-version>
 		<common-core-version>[4.0.0,)</common-core-version>
 		<plugin-lib-version>[4.0.0,)</plugin-lib-version>
+		<VaultAPI-version>[1,)</VaultAPI-version>
 
 	</properties>
 	<scm>
@@ -198,6 +199,13 @@
 				<enabled>true</enabled>
 			</snapshots>
 		</repository>
+		<repository>
+			<id>jitpack-repo</id>
+			<url>https://jitpack.io</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
 	</repositories>
 	<dependencies>
 		<dependency>
@@ -217,6 +225,11 @@
 			<groupId>com.poixson</groupId>
 			<version>${plugin-lib-version}</version>
 			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<artifactId>VaultAPI</artifactId>
+			<groupId>com.github.MilkBowl</groupId>
+			<version>${VaultAPI-version}</version>
 		</dependency>
 	</dependencies>
 </project>
