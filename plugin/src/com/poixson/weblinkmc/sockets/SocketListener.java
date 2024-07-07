@@ -84,7 +84,7 @@ public class SocketListener extends Thread implements Closeable {
 
 
 	public Logger log() {
-		return this.plugin.getLogger();
+		return this.plugin.log();
 	}
 
 

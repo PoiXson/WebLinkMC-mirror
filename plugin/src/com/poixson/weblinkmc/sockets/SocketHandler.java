@@ -131,7 +131,7 @@ public class SocketHandler extends Thread implements Closeable, ChunkProcessor {
 
 
 	public Logger log() {
-		return this.plugin.getLogger();
+		return this.plugin.log();
 	}
 
 
