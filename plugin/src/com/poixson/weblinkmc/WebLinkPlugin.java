@@ -63,6 +63,9 @@ public class WebLinkPlugin extends xJavaPlugin {
 		// api
 		Bukkit.getServicesManager()
 			.register(WebLinkPlugin.class, this, this, ServicePriority.Normal);
+		// save
+		this.setConfigChanged();
+		this.saveConfigs();
 	}
 
 	@Override
