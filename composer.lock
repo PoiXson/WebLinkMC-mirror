@@ -63,16 +63,16 @@
         },
         {
             "name": "pxn/phputils",
-            "version": "0.4.22",
+            "version": "0.4.24",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PoiXson/phpUtils-mirror.git",
-                "reference": "b68f31a8c66a1794c9d0d058460a7f3d9f9359e5"
+                "reference": "2a1d795f5408260c0a11809bdb488b6ac32274b4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PoiXson/phpUtils-mirror/zipball/b68f31a8c66a1794c9d0d058460a7f3d9f9359e5",
-                "reference": "b68f31a8c66a1794c9d0d058460a7f3d9f9359e5",
+                "url": "https://api.github.com/repos/PoiXson/phpUtils-mirror/zipball/2a1d795f5408260c0a11809bdb488b6ac32274b4",
+                "reference": "2a1d795f5408260c0a11809bdb488b6ac32274b4",
                 "shasum": ""
             },
             "require": {
@@ -109,7 +109,7 @@
                 }
             ],
             "description": "PHP Utilities Library",
-            "homepage": "https://poixson.com",
+            "homepage": "https://poixson.com/",
             "keywords": [
                 "framework",
                 "utilities"
@@ -119,7 +119,7 @@
                 "issues": "https://git.poixson.com/tickets/pxn!phpUtils.git",
                 "source": "https://git.poixson.com/summary/pxn!phpUtils.git"
             },
-            "time": "2023-12-11T22:44:30+00:00"
+            "time": "2024-07-25T03:26:33+00:00"
         }
     ],
     "packages-dev": [
@@ -818,16 +818,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "10.5.27",
+            "version": "10.5.28",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "2425f713b2a5350568ccb1a2d3984841a23e83c5"
+                "reference": "ff7fb85cdf88131b83e721fb2a327b664dbed275"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/2425f713b2a5350568ccb1a2d3984841a23e83c5",
-                "reference": "2425f713b2a5350568ccb1a2d3984841a23e83c5",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/ff7fb85cdf88131b83e721fb2a327b664dbed275",
+                "reference": "ff7fb85cdf88131b83e721fb2a327b664dbed275",
                 "shasum": ""
             },
             "require": {
@@ -899,7 +899,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
                 "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/10.5.27"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/10.5.28"
             },
             "funding": [
                 {
@@ -915,7 +915,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-07-10T11:48:06+00:00"
+            "time": "2024-07-18T14:54:16+00:00"
         },
         {
             "name": "psr/log",
