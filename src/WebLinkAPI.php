@@ -24,8 +24,10 @@ class WebLinkAPI {
 		if ($this->socket === false)
 			throw new \RuntimeException('Failed to create socket');
 		\socket_set_block($this->socket);
-		if (!\socket_connect($this->socket, $address, $port))
-			throw new \RuntimeException('Failed to connect to: '.$address);
+		if (!\socket_connect($this->socket, $address, $port)) {
+			if (\pxn\phpUtils\Debug::debug())
+				throw new \RuntimeException('Failed to connect to: '.$address);
+		}
 	}
 
 
