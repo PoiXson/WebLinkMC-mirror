@@ -12,7 +12,6 @@ import java.util.concurrent.CopyOnWriteArraySet;
 import java.util.concurrent.atomic.AtomicReference;
 
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.plugin.ServicePriority;
 
 import com.poixson.tools.xJavaPlugin;
@@ -20,11 +19,14 @@ import com.poixson.weblinkmc.TopStats.PlayerStatsDAO;
 import com.poixson.weblinkmc.sockets.SocketHandler;
 import com.poixson.weblinkmc.sockets.SocketListener;
 
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.NamedTextColor;
+
 
 public class WebLinkPlugin extends xJavaPlugin {
 	@Override public int getSpigotPluginID() { return 107954; }
 	@Override public int getBStatsID() {       return 17698;  }
-	public static final String CHAT_PREFIX = ChatColor.DARK_AQUA+"[WebLink] "+ChatColor.WHITE;
+	public static final Component CHAT_PREFIX = Component.text("[WebLink] ").color(NamedTextColor.AQUA);
 
 	public static int API_PORT = 25511;
 
