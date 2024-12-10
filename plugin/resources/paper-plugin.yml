@@ -2,10 +2,14 @@ name: ${project.name}
 main: com.poixson.weblinkmc.WebLinkPlugin
 version: '${project.version}'
 api-version: '${bukkit-short-version}'
-depends:
-  - pxnPluginLib
-soft-depends:
-  - Vault
+dependencies:
+    server:
+        pxnPluginLib:
+            load: BEFORE
+            required: true
+        Vault:
+            load: BEFORE
+            required: false
 authors: lorenzop
 website: ${project.url}
 description: ${project.description}
