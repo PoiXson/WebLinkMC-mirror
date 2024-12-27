@@ -37,7 +37,7 @@ public class WebLinkPlugin extends xJavaPlugin {
 
 
 	public WebLinkPlugin() {
-		super(WebLinkPlugin.class);
+		super();
 	}
 
 
