@@ -1,6 +1,12 @@
 WebLinkMC - Link your website with your mc server
 
 
+2024-12-07 - 0.1.11
+===================
+* Spigot 1.21.1 - Java 21
+* last commit with spigot dependencies - switching to paper api
+
+
 2023-02-05 - 0.1.1
 ==================
 * initial release
